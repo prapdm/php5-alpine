@@ -46,7 +46,7 @@ RUN	apk update && \
 
 
 
-touch /etc/php5/conf.d/custom.ini && \
+touch /etc/php5/fpm.d/custom.ini && \
 sed -i "s|;*daemonize\s*=\s*yes|daemonize = no|g" /etc/php5/php-fpm.conf && \
 sed -i "s|;*listen\s*=\s*127.0.0.1:9000|listen = 9000|g" /etc/php5/php-fpm.conf && \
 sed -i "s|;*listen\s*=\s*/||g" /etc/php5/php-fpm.conf && \
@@ -54,12 +54,12 @@ sed -i "s/;listen.owner = nobody/listen.owner = www-data/g" /etc/php5/php-fpm.co
 sed -i "s/;listen.group = nobody/listen.group = www-data/g" /etc/php5/php-fpm.conf && \
 sed -i "s/user = nobody/user = www-data/g" /etc/php5/php-fpm.conf  && \
 sed -i "s/group = nobody/group = www-data/g" /etc/php5/php-fpm.conf && \
-echo "date.timezone = ${TIMEZONE}" >>/etc/php5/conf.d/custom.ini && \
-echo "memory_limit = ${PHP_MEMORY_LIMIT}" >>/etc/php5/conf.d/custom.ini && \
-echo "upload_max_filesize = ${MAX_UPLOAD}" >>/etc/php5/conf.d/custom.ini && \
-echo "max_file_uploads = ${PHP_MAX_FILE_UPLOAD}" >>/etc/php5/conf.d/custom.ini && \
-echo "post_max_size = ${PHP_MAX_POST}" >>/etc/php5/conf.d/custom.ini && \
-echo "short_open_tag = ${SHORT_OPEN_TAG}" >>/etc/php5/conf.d/custom.ini  && \
+echo "date.timezone = ${TIMEZONE}" >>/etc/php5/fpm.d/custom.ini && \
+echo "memory_limit = ${PHP_MEMORY_LIMIT}" >>/etc/php5/fpm.d/custom.ini && \
+echo "upload_max_filesize = ${MAX_UPLOAD}" >>/etc/php5/fpm.d/custom.ini && \
+echo "max_file_uploads = ${PHP_MAX_FILE_UPLOAD}" >>/etc/php5/fpm.d/custom.ini && \
+echo "post_max_size = ${PHP_MAX_POST}" >>/etc/php5/fpm.d/custom.ini && \
+echo "short_open_tag = ${SHORT_OPEN_TAG}" >>/etc/php5/fpm.d/custom.ini  && \
 
 
 mkdir /usr/share/nginx && \
