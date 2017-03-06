@@ -56,17 +56,18 @@ sed -i "s|;*cgi.fix_pathinfo=.*|cgi.fix_pathinfo= 0|i" /etc/php5/php.ini && \
 sed -i "s|;*short_open_tag =.*|short_open_tag = ${SHORT_OPEN_TAG}|i" /etc/php5/php.ini && \ 
 
 # Cleaning up
-mkdir /www && \
+mkdir /usr/share/nginx && \
+mkdir /usr/share/nginx/html && \
 rm -rf /var/cache/apk/* && \
 rm -rf /tmp/* && \
 rm -rf /src  && \
 rm -rf /var/cache/apk/*
 
 # Set Workdir
-WORKDIR /www
+WORKDIR /usr/share/nginx/html
 
 # Expose volumes
-VOLUME ["/www"]
+VOLUME ["/usr/share/nginx/html"]
 
 # Expose ports
 EXPOSE 9000
