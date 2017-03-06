@@ -23,6 +23,7 @@ RUN	apk update && \
 		php5-pdo \
 		php5-zip \
 		php5-mysql \
+		php5-mysqli \
 		php5-sqlite3 \
 		php5-apcu \
 		php5-pdo_pgsql \
