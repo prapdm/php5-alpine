@@ -58,6 +58,7 @@ sed -i "s|;*short_open_tag =.*|short_open_tag = ${SHORT_OPEN_TAG}|i" /etc/php5/p
 # Cleaning up
 mkdir /usr/share/nginx && \
 mkdir /usr/share/nginx/html && \
+chown -R www-data:www-data /usr/share/nginx/ && \
 rm -rf /var/cache/apk/* && \
 rm -rf /tmp/* && \
 rm -rf /src  && \
