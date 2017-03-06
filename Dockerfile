@@ -45,6 +45,8 @@ RUN	apk update && \
 		php5-fpm && \
 
 
+
+touch /etc/php5/conf.d/custom.ini && \
 sed -i "s|;*daemonize\s*=\s*yes|daemonize = no|g" /etc/php5/php-fpm.conf && \
 sed -i "s|;*listen\s*=\s*127.0.0.1:9000|listen = 9000|g" /etc/php5/php-fpm.conf && \
 sed -i "s|;*listen\s*=\s*/||g" /etc/php5/php-fpm.conf && \
@@ -52,21 +54,22 @@ sed -i "s/;listen.owner = nobody/listen.owner = www-data/g" /etc/php5/php-fpm.co
 sed -i "s/;listen.group = nobody/listen.group = www-data/g" /etc/php5/php-fpm.conf && \
 sed -i "s/user = nobody/user = www-data/g" /etc/php5/php-fpm.conf  && \
 sed -i "s/group = nobody/group = www-data/g" /etc/php5/php-fpm.conf && \
-sed -i "s|;*date.timezone =.*|date.timezone = ${TIMEZONE}|i" /etc/php5/php.ini && \
-sed -i "s|;*memory_limit =.*|memory_limit = ${PHP_MEMORY_LIMIT}|i" /etc/php5/php.ini && \
-sed -i "s|;*upload_max_filesize =.*|upload_max_filesize = ${MAX_UPLOAD}|i" /etc/php5/php.ini && \
-sed -i "s|;*max_file_uploads =.*|max_file_uploads = ${PHP_MAX_FILE_UPLOAD}|i" /etc/php5/php.ini && \
-sed -i "s|;*post_max_size =.*|post_max_size = ${PHP_MAX_POST}|i" /etc/php5/php.ini && \
-sed -i "s|;*cgi.fix_pathinfo=.*|cgi.fix_pathinfo= 0|i" /etc/php5/php.ini && \
-sed -i "s|;*short_open_tag =.*|short_open_tag = ${SHORT_OPEN_TAG}|i" /etc/php5/php.ini && \ 
+echo "date.timezone = ${TIMEZONE}" >>/etc/php5/conf.d/custom.ini && \
+echo "memory_limit = ${PHP_MEMORY_LIMIT}" >>/etc/php5/conf.d/custom.ini && \
+echo "upload_max_filesize = ${MAX_UPLOAD}" >>/etc/php5/conf.d/custom.ini && \
+echo "max_file_uploads = ${PHP_MAX_FILE_UPLOAD}" >>/etc/php5/conf.d/custom.ini && \
+echo "post_max_size = ${PHP_MAX_POST}" >>/etc/php5/conf.d/custom.ini && \
+echo "short_open_tag = ${SHORT_OPEN_TAG}" >>/etc/php5/conf.d/custom.ini  && \
 
-# Cleaning up
+
 mkdir /usr/share/nginx && \
 mkdir /usr/share/nginx/html && \
 rm -rf /var/cache/apk/* && \
 rm -rf /tmp/* && \
 rm -rf /src  && \
 rm -rf /var/cache/apk/*
+
+
 
 # Set Workdir
 WORKDIR /usr/share/nginx/html
