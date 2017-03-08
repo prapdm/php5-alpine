@@ -60,7 +60,7 @@ echo "upload_max_filesize = ${MAX_UPLOAD}" >>/etc/php5/conf.d/custom.ini && \
 echo "max_file_uploads = ${PHP_MAX_FILE_UPLOAD}" >>/etc/php5/conf.d/custom.ini && \
 echo "post_max_size = ${PHP_MAX_POST}" >>/etc/php5/conf.d/custom.ini && \
 echo "short_open_tag = ${SHORT_OPEN_TAG}" >>/etc/php5/conf.d/custom.ini  && \
-
+echo "sendmail_path = /usr/sbin/sendmail -t -i -S opensmtpd:25" >>/etc/php5/conf.d/custom.ini && \
 
 mkdir /usr/share/nginx && \
 mkdir /usr/share/nginx/html && \
