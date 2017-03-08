@@ -64,6 +64,7 @@ echo "short_open_tag = ${SHORT_OPEN_TAG}" >>/etc/php5/conf.d/custom.ini  && \
 
 mkdir /usr/share/nginx && \
 mkdir /usr/share/nginx/html && \
+mkdir /usr/share/webapps  && \
 rm -rf /var/cache/apk/* && \
 rm -rf /tmp/* && \
 rm -rf /src  && \
